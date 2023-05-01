@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21G83" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CharacterCoreDataModel" representedClassName=".CharacterCoreDataModel" syncable="YES">
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="imageUrl" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="updatedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="comic" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ComicCoreDataModel" inverseName="characters" inverseEntity="ComicCoreDataModel"/>
+        <relationship name="loadingState" maxCount="1" deletionRule="Cascade" destinationEntity="CharacterLoadingState"/>
+    </entity>
+    <entity name="CharacterLoadingState" representedClassName=".CharacterLoadingState" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isAllLoaded" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="offset" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="ComicCoreDataModel" representedClassName=".ComicCoreDataModel" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="imageUrl" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="updatedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="characters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CharacterCoreDataModel" inverseName="comic" inverseEntity="CharacterCoreDataModel"/>
+    </entity>
+    <entity name="ImageCache" representedClassName=".ImageCache" syncable="YES">
+        <attribute name="fileID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="updatedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="CharacterCoreDataModel" positionX="-45" positionY="0" width="128" height="119"/>
+        <element name="CharacterLoadingState" positionX="-54" positionY="36" width="128" height="74"/>
+        <element name="ComicCoreDataModel" positionX="-54" positionY="-9" width="128" height="104"/>
+        <element name="ImageCache" positionX="-54" positionY="45" width="128" height="74"/>
+    </elements>
+</model>
